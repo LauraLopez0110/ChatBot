@@ -1,0 +1,234 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('/static/L.jpg'); /* Cambia la ruta por la imagen que tengas */
+   background-size: cover;          /* Que la imagen cubra todo el fondo */
+  background-position: center;     /* Centrada */
+  background-repeat: no-repeat;    /* No repetir */
+  background-color: #f4f4f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  min-height: 100vh;
+}
+
+
+
+.main-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.chat-container, .pdf-container {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-container h1, .pdf-container h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 12px; /* ↓ antes era 24px */
+  box-shadow: 0 6px 20px rgba(23, 4, 4, 0.2);
+  font-size: 1.5rem;
+  color: #393131;
+}
+
+/* Chat Box */
+.chat-box {
+  flex-grow: 1;
+  background-image: url('/static/a.jpg');
+  background-size: cover;       /* La imagen cubre todo el área */
+  background-position: center;  /* Centrada */
+  background-repeat: no-repeat; /* No repetir */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 6px 20px rgba(23, 4, 4, 0.2);
+  overflow-y: auto;
+  min-height: 250px;
+  max-height: 400px;
+  margin-bottom: 16px;
+}
+
+/* Chat messages */
+.chat-message {
+  margin-bottom: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 85%;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.user-message {
+  background-color: #d1f4d1;
+  align-self: flex-end;
+  text-align: right;
+  margin-left: auto;  /* muy importante */
+  margin-right: 0; 
+}
+
+.bot-message {
+  background-color: #eee;
+  padding: 8px 14px; 
+  align-self: flex-start;
+  text-align: left;
+}
+
+.system-message {
+  background-color: #e0e0e0;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Input form */
+.chat-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.chat-form input[type="text"] {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.chat-form button {
+  padding: 12px 20px;
+  background-color: #10a37f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s ease;
+}
+
+.chat-form button:hover {
+  background-color: #0e8b6a;
+}
+
+.reset-btn {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.reset-btn:hover {
+  background-color: #dc2626;
+}
+/* PDF Upload */
+.pdf-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+ 
+  flex-wrap: nowrap;      /* evita que los elementos se vayan abajo */
+  align-items: stretch; 
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-form input[type="file"] {
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.pdf-form button {
+  padding: 10px 18px;
+  background-color: #29a183;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.pdf-form button:hover {
+  background-color: #32a791;
+}
+
+/* PDF list */
+.pdf-list ul {
+  padding-left: 0;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  list-style: none;
+}
+
+.pdf-list li {
+  background-color: #f1f5f9;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.pdf-filename {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+
+/* Estilo cuando no hay PDFs */
+.no-pdfs {
+  font-style: italic;
+  color: #666;
+  padding-left: 10px;
+}
+
+
+h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* espacio entre logo y texto */
+}
+
+.logo {
+  width: 40px;  /* ajusta tamaño del logo */
+  height: auto;
+}
+
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}

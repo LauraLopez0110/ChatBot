@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatTPG</title>
+    <link rel="stylesheet" href = "{{url_for('static', filename = 'styles-2.css')}}">
+</head>
+<body>
+
+    <div class = "main-container">
+        
+        <div class="chat-container">
+            
+            <h1 style="text-align: center;">
+          <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" class="logo" style="border-radius: 50%; width: 45px; height: 45px;"><br>
+          <span style="position: relative; top: -5px; left: 20px;">
+        Chat Migración Colombia
+          </span>
+             </h1>
+            <div id="chat-box" class="chat-box"></div>
+            <form id="chat-form" class="chat-form">
+                
+                <input type="text" id="question"
+                placeholder="Escribe tu pregunta.."
+                autocomplete="off" required>
+                
+                <button type="submit">Enviar</button>
+                
+            </form>
+            
+            <button id="reset-btn">Limpiar chat</button>
+             <button id="toggle-pdf-section" style="margin-top: 20px;">Mostrar Gestión de PDFs</button>
+        </div>
+        
+        <!-- Cargar PDF -->
+        <div class="pdf-container" id="pdf-section" style="display: none;">
+            
+            <h2>Gestión de PDFs</h2>
+            
+            <form id="pdf-upload-form" action = "{{ url_for('upload_pdf') }}" method = "POST" enctype = "multipart/form-data" class="pdf-form">
+                
+                <input type="file" name = "pdf" accept = "application/pdf">
+                <button type="submit">Subir PDF</button>
+                
+            </form>
+            
+          {% if pdfs %}
+  <h3 style="margin-bottom: 10px;">PDFs cargados:</h3>
+  <ul class="pdf-list">
+    {% for pdf in pdfs %}
+    <li>
+      <span class="pdf-filename" title="{{ pdf }}">{{ pdf }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p class="no-pdfs">No hay PDFs en la carpeta aún</p>
+{% endif %}
+
+
+            <!-- Procesar -->
+             <form id = "pdf-process-form" action = "{{ url_for('procesar_pdfs') }}" method = "POST" , class = "pdf-form">
+                <button type = "submit">Procesar todos los PDFs</button>
+             </form>
+        </div>
+
+    </div>
+
+    <script src = "{{url_for('static', filename = 'script.js')}}"></script>
+
+</body>
+</html> 
